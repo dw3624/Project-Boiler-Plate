@@ -1,25 +1,20 @@
 ---
 name: 'component'
-root: '.'
-output: 'src/components'
+root: 'src/components'
+output: '.'
 ignore: []
 questions:
-  directory:
-    message: 'Please select the component type.'
-    choices:
-      - atoms
-      - blocks
-      - templates
-
   name: 'Please enter a component name.'
 ---
 
-# `{{ inputs.directory }}/{{ inputs.name | pascal }}/{{ inputs.name | pascal }}.tsx`
+# `{{ inputs.name | pascal }}/{{ inputs.name | pascal }}.tsx`
 
 ```typescript
 import React from 'react';
 
-const {{ inputs.name | pascal }} = (): JSX.Element => {
+import styles from './{{ inputs.name | pascal }}.module.css'
+
+const {{ inputs.name | pascal }} = () => {
   return (
     <div>
     </div>
@@ -30,20 +25,20 @@ export default {{ inputs.name | pascal }};
 
 ```
 
-# `{{ inputs.directory }}/{{ inputs.name | pascal }}/{{ inputs.name | pascal }}.module.css`
+# `{{ inputs.name | pascal }}/{{ inputs.name | pascal }}.module.css`
 
 ```css
 
 ```
 
-# `{{ inputs.directory }}/{{ inputs.name | pascal }}/{{ inputs.name | pascal }}.stories.ts`
+# `{{ inputs.name | pascal }}/{{ inputs.name | pascal }}.stories.ts`
 
 ```typescript
 import { Meta, StoryObj } from '@storybook/react';
 import {{ inputs.name | pascal }} from './{{ inputs.name | pascal }}';
 
 const meta: Meta<typeof {{ inputs.name | pascal }}> = {
-  title: 'Components/{{ inputs.directory }}/{{ inputs.name | pascal }}',
+  title: 'Components/{{ inputs.name | pascal }}',
   component: {{ inputs.name | pascal }},
 };
 
